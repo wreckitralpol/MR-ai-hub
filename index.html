@@ -366,7 +366,7 @@
             window.addEventListener('popstate', () => showSection(window.location.hash || '#home'));
 
             // --- Data Fetching from Google Sheet ---
-            async function fetchProjectsFromSheet() {
+            async function fetchProjectsFromSheet(https://docs.google.com/spreadsheets/d/18HwTjaK_5_OjrczuQfHTsbOjZfKHQUl7snGo4zifCvg/edit?gid=0#gid=0) {
                 verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>`;
                 if (!googleWebAppUrl.startsWith('https')) {
                     verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Error: Google Web App URL is not configured.</td></tr>`;
