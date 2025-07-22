@@ -1,189 +1,117 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MegaRhino AI Innovation Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-red: #E63946;
-            --brand-green: #BCE2D2;
-            --brand-yellow: #FBEA9D;
-            --brand-card-yellow: #F9E79F;
-            --brand-light-blue: #F1FAEE;
-            --brand-dark-blue: #1D3557;
-        }
-        body { font-family: 'Inter', sans-serif; color: var(--brand-dark-blue); background-color: #F8F9FA; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--brand-dark-blue);}
-        .nav-link.active {
-            background-color: #FEF5F5;
-            color: var(--brand-red);
-            font-weight: 600;
-        }
-        .tab-button.active {
-            border-bottom-color: var(--brand-red);
-            color: var(--brand-red);
-            font-weight: 600;
-        }
-        .form-input {
-           border: 1px solid #cbd5e1;
-        }
-        .form-input:focus {
-           border-color: var(--brand-red) !important;
-           box-shadow: 0 0 0 1px var(--brand-red);
-           outline: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="flex flex-col md:flex-row min-h-screen">
-        <!-- Sidebar Navigation -->
-        <aside class="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex-shrink-0">
-            <div class="p-4 flex items-center justify-center border-b border-slate-200 h-24" style="background-color: var(--brand-yellow);">
-                <h1 class="text-2xl text-center font-extrabold" style="color: var(--brand-dark-blue);">MegaRhino AIP</h1>
-            </div>
-            <nav class="p-4 space-y-2">
-                <a href="#home" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <!-- home icon -->
-                    Hub Home
-                </a>
-                <a href="#guidelines" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    Program Guidelines
-                </a>
-                <a href="#submit" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    Submit a Project
-                </a>
-                <a href="#verification" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    Submitted Projects
-                </a>
-            </nav>
-        </aside>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // ────────────────────────────────────────────────────────────────────────────
+    // CONFIGURATION: Paste your published Exec URL here (must be "/exec")
+    // ────────────────────────────────────────────────────────────────────────────
+    const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbzg3XLz6401_6OMfKOofVdejfMt8C0ipcD6Laj6dPCNlJXsLtT8doXS66Js3gK7xkrqIg/exec';
 
-        <!-- Main Content -->
-        <main class="flex-1 overflow-y-auto">
-            <!-- home, guidelines, submit sections omitted for brevity… -->
+    // Cache DOM elements
+    const mainSections = document.querySelectorAll('.main-section');
+    const navLinks      = document.querySelectorAll('.nav-link, .nav-link-cta');
+    const verificationTableBody = document.getElementById('verification-table-body');
+    const confirmSubmissionBtn  = document.getElementById('confirm-submission-btn');
+    const submissionForm        = document.getElementById('submission-form');
+    const confirmationModal     = document.getElementById('confirmation-modal');
+    let allProjects = [];
 
-            <div id="verification" class="main-section hidden">
-                <div class="p-6 md:p-10">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-12">Submitted Projects</h2>
-                    
-                    <div class="mt-12">
-                        <div class="bg-white rounded-lg shadow-lg border overflow-x-auto">
-                            <table class="w-full text-sm text-left">
-                                <thead class="bg-slate-50">
-                                    <tr>
-                                        <th class="p-4 font-semibold">Project Title</th>
-                                        <th class="p-4 font-semibold">Submitter(s)</th>
-                                        <th class="p-4 font-semibold">Date</th>
-                                        <th class="p-4 font-semibold">Monthly Hrs Saved</th>
-                                        <th class="p-4 font-semibold">Status</th>
-                                        <th class="p-4 font-semibold text-center"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="verification-table-body">
-                                    <tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Modals omitted for brevity… -->
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // =================================================================================
-            // CONFIGURATION
-            // =================================================================================
-            const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbzg3XLz6401_6OMfKOofVdejfMt8C0ipcD6Laj6dPCNlJXsLtT8doXS66Js3gK7xkrqIg/exec';
-            // =================================================================================
-
-            const verificationTableBody = document.getElementById('verification-table-body');
-            let allProjects = [];
-
-            // --- Core Navigation (home, guidelines, submit sections omitted) ---
-
-            // --- Data Fetching from Google Sheet ---
-            async function fetchProjectsFromSheet() {
-                verificationTableBody.innerHTML =
-                  `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects…</td></tr>`;
-                
-                try {
-                    const response = await fetch(googleWebAppUrl, {
-                        method: 'GET',
-                        mode: 'cors'
-                    });
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    const projectsFromSheet = await response.json();
-                    
-                    allProjects = projectsFromSheet.map(p => ({
-                        id: p.ProjectID,
-                        projectTitle: p['Project Title'],
-                        submissionDate: new Date(p['SubmissionDate']).toISOString().split('T')[0],
-                        submitter: p.Submitters.split('\n')[0].split('(')[0].trim(),
-                        status: p.Status,
-                        monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
-                        fullSubmitterInfo: p.Submitters
-                    }));
-                    
-                    renderVerificationTable();
-                } catch (error) {
-                    console.error('Failed to fetch projects:', error);
-                    verificationTableBody.innerHTML =
-                      `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">
-                         Could not load project data. Please check the script deployment permissions.
-                       </td></tr>`;
-                }
-            }
-
-            // --- UI Rendering (renderVerificationTable, modals, etc.) omitted ---
-
-            // --- Form Submit Handler ---
-            confirmSubmissionBtn.addEventListener('click', () => {
-                confirmSubmissionBtn.disabled = true;
-                confirmSubmissionBtn.innerHTML = 'Submitting...';
-
-                // build your payload object as before...
-                const payload = { /* ... */ };
-
-                fetch(googleWebAppUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',
-                    body: JSON.stringify(payload)
-                })
-                .then(res => {
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    return res.json();
-                })
-                .then(() => {
-                    alert('Success! Your project has been submitted for review.');
-                    // reset form, update UI, then:
-                    showSection('#verification');
-                    fetchProjectsFromSheet();
-                })
-                .catch(error => {
-                    console.error('Error submitting to Google Sheet:', error);
-                    alert('There was an error submitting your project. Please try again.');
-                })
-                .finally(() => {
-                    confirmSubmissionBtn.disabled = false;
-                    confirmSubmissionBtn.innerHTML = 'Confirm & Submit';
-                    confirmationModal.classList.add('hidden');
-                    confirmationModal.classList.remove('flex');
-                });
-            });
-
-            // --- INITIAL LOAD ---
-            fetchProjectsFromSheet();
+    // ────────────────────────────────────────────────────────────────────────────
+    // NAVIGATION (unchanged)
+    // ────────────────────────────────────────────────────────────────────────────
+    function showSection(hash) {
+        mainSections.forEach(s => s.classList.add('hidden'));
+        const sec = document.querySelector(hash) || document.querySelector('#home');
+        sec.classList.remove('hidden');
+        if (hash === '#verification') fetchProjectsFromSheet();
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === hash));
+    }
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const h = link.getAttribute('href');
+            history.pushState(null, null, h);
+            showSection(h);
         });
-    </script>
-</body>
-</html>
+    });
+    window.addEventListener('popstate', () => showSection(window.location.hash || '#home'));
+
+    // ────────────────────────────────────────────────────────────────────────────
+    // 1) FETCH & RENDER SUBMITTED PROJECTS
+    // ────────────────────────────────────────────────────────────────────────────
+    async function fetchProjectsFromSheet() {
+        verificationTableBody.innerHTML =
+            `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects…</td></tr>`;
+        try {
+            // 🔑 Use CORS mode and GET
+            const res = await fetch(googleWebAppUrl, { method: 'GET', mode: 'cors' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const sheetData = await res.json();
+
+            allProjects = sheetData.map(p => ({
+                id: p.ProjectID,
+                projectTitle: p['Project Title'],
+                submissionDate: new Date(p['SubmissionDate']).toISOString().split('T')[0],
+                submitter: p.Submitters.split('\n')[0].split('(')[0].trim(),
+                status: p.Status,
+                monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
+                fullSubmitterInfo: p.Submitters
+            }));
+            renderVerificationTable();
+
+        } catch (err) {
+            console.error('Failed fetching projects:', err);
+            verificationTableBody.innerHTML =
+              `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">
+                 Could not load project data. Please check the script deployment permissions.
+               </td></tr>`;
+        }
+    }
+
+    // ────────────────────────────────────────────────────────────────────────────
+    // 2) SUBMIT FORM → POST TO SHEETS
+    // ────────────────────────────────────────────────────────────────────────────
+    confirmSubmissionBtn.addEventListener('click', () => {
+        confirmSubmissionBtn.disabled = true;
+        confirmSubmissionBtn.textContent = 'Submitting…';
+
+        // Build your payload exactly as before
+        const payload = buildPayloadFromForm();
+
+        // 🔑 Use CORS mode, POST, and send JSON
+        fetch(googleWebAppUrl, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+        })
+        .then(() => {
+            alert('Success! Your project has been submitted for review.');
+            resetFormAndState();
+            showSection('#verification');
+            fetchProjectsFromSheet();
+        })
+        .catch(err => {
+            console.error('Error submitting to Google Sheet:', err);
+            alert('There was an error submitting your project. Please try again.');
+        })
+        .finally(() => {
+            confirmSubmissionBtn.disabled = false;
+            confirmSubmissionBtn.textContent = 'Confirm & Submit';
+            confirmationModal.classList.add('hidden');
+            confirmationModal.classList.remove('flex');
+        });
+    });
+
+    // ────────────────────────────────────────────────────────────────────────────
+    // INITIALIZE
+    // ────────────────────────────────────────────────────────────────────────────
+    showSection(window.location.hash || '#home');
+});
+
+// (You can leave your helper functions like renderVerificationTable(),
+//  buildPayloadFromForm(), resetFormAndState(), and your modals/event
+//  wiring exactly as they were—only the two fetch calls above needed to change.)
+</script>
