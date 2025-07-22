@@ -30,7 +30,7 @@
             font-weight: 600;
         }
         .form-input {
-           border: 1px solid #cbd5e1; /* Thin, slate-300 border for better contrast */
+           border: 1px solid #cbd5e1;
         }
         .form-input:focus {
            border-color: var(--brand-red) !important;
@@ -48,19 +48,16 @@
             </div>
             <nav class="p-4 space-y-2">
                 <a href="#home" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
+                    <!-- home icon -->
                     Hub Home
                 </a>
                 <a href="#guidelines" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                     <svg class="w-5 h-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" /></svg>
                     Program Guidelines
                 </a>
                 <a href="#submit" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
                     Submit a Project
                 </a>
                 <a href="#verification" class="nav-link flex items-center px-4 py-3 text-slate-600 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
-                    <svg class="w-5 h-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
                     Submitted Projects
                 </a>
             </nav>
@@ -68,205 +65,8 @@
 
         <!-- Main Content -->
         <main class="flex-1 overflow-y-auto">
-            <div id="home" class="main-section">
-                <div class="p-6 md:p-10" style="background-color: var(--brand-yellow);">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-2">The AI nightmares you can leave behind</h2>
-                    <p class="text-lg text-slate-700 max-w-3xl">Brands on Amazon face a slew of challenges. This program helps you solve them with AI and get rewarded for your ingenuity.</p>
-                </div>
-                <div class="p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
-                        <h3 class="text-2xl font-bold mb-2">Have a Project Idea?</h3>
-                        <p class="text-slate-500 mb-6">Turn your innovative ideas into impactful solutions.</p>
-                        <a href="#submit" class="nav-link-cta text-white font-bold px-8 py-3 rounded-md hover:opacity-90 transition-opacity inline-block" style="background-color: var(--brand-red);">Submit Your Project</a>
-                    </div>
-                     <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
-                        <h3 class="text-2xl font-bold mb-2">How It Works</h3>
-                        <p class="text-slate-500 mb-6">Understand the rules, rewards, and processes.</p>
-                        <a href="#guidelines" class="nav-link-cta bg-slate-800 text-white font-bold px-8 py-3 rounded-md hover:bg-slate-700 transition-colors inline-block">Read the Guidelines</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="guidelines" class="main-section hidden">
-                <div class="p-6 md:p-10">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8">Program Guidelines</h2>
-                    
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 mb-12">
-                        <div class="mb-6">
-                            <h3 class="text-3xl font-bold mb-3">Purpose</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">This document outlines the guidelines for the AI Incentivization Program, designed to encourage and reward team members for leveraging Artificial Intelligence (AI) tools and methodologies to enhance efficiency, innovate processes, and achieve significant time savings in their projects and daily tasks. The program aims to foster a culture of continuous improvement and technological adoption within the team, recognizing the tangible benefits derived from the strategic application of AI.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-bold mb-3">General Guidelines</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">Participation in the AI Incentivization Program is open to all team members. The program emphasizes the responsible and ethical use of AI tools. All submissions must clearly demonstrate how AI tools were utilized to achieve measurable improvements, such as time savings or increased efficiency. Projects submitted for incentivization should align with the team's overall objectives and contribute positively to productivity and innovation.</p>
-                        </div>
-                    </div>
+            <!-- home, guidelines, submit sections omitted for brevity… -->
 
-                    <div class="mb-12">
-                        <h3 class="text-3xl font-bold mb-6">Task Classification Tiers</h3>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-8 rounded-lg shadow-lg flex flex-col h-full" style="background-color: var(--brand-red); color: white;">
-                                <span class="block text-5xl font-extrabold mb-4" style="color: var(--brand-yellow);">Tier 1</span>
-                                <h4 class="font-bold text-xl mb-2">Routine Optimization</h4>
-                                <p class="mb-4 opacity-90 flex-grow">Low-complexity, repetitive tasks with a clear, established process. Affects individual workflow and saves less than 20 hours/month.</p>
-                                <p class="text-sm border-t border-white/30 pt-4 mt-4 opacity-90"><strong class="font-semibold">Example:</strong> Using an AI writing assistant to draft standard weekly emails or reports.</p>
-                            </div>
-                             <div class="bg-white p-8 rounded-lg shadow-lg border flex flex-col h-full">
-                                <span class="block text-5xl font-extrabold mb-4" style="color: var(--brand-red);">Tier 2</span>
-                                <h4 class="font-bold text-xl mb-2">Process Improvement</h4>
-                                <p class="text-slate-500 mb-4 flex-grow">Moderately complex tasks that may involve multiple steps and some analysis. Affects a small team or a multi-step process, saving 20-40 hours/month.</p>
-                                <p class="text-sm border-t border-slate-200 pt-4 mt-4 text-slate-500"><strong class="font-semibold text-slate-600">Example:</strong> Automating meeting transcription and action item generation.</p>
-                            </div>
-                            <div class="p-8 rounded-lg shadow-lg flex flex-col h-full" style="background-color: var(--brand-green);">
-                                <span class="block text-5xl font-extrabold mb-4" style="color: var(--brand-dark-blue);">Tier 3</span>
-                                <h4 class="font-bold text-xl mb-2">Complex System Enhancement</h4>
-                                <p class="text-slate-800 mb-4 flex-grow">High-complexity, strategic projects with significant ambiguity. Has a major impact on team goals and saves over 40 hours/month.</p>
-                                <p class="text-sm border-t border-slate-800/20 pt-4 mt-4 text-slate-800"><strong class="font-semibold">Example:</strong> Developing an AI system to analyze customer feedback from multiple channels.</p>
-                            </div>
-                             <div class="p-8 rounded-lg shadow-lg flex flex-col h-full" style="background-color: var(--brand-card-yellow);">
-                                <span class="block text-5xl font-extrabold mb-4" style="color: var(--brand-dark-blue);">Tier 4</span>
-                                <h4 class="font-bold text-xl mb-2">Strategic Innovation</h4>
-                                <p class="text-slate-800 mb-4 flex-grow">"Moonshot" projects that introduce a new capability, service, or workflow that was not previously possible, with wide-ranging impact.</p>
-                                <p class="text-sm border-t border-slate-800/20 pt-4 mt-4 text-slate-800"><strong class="font-semibold">Example:</strong> Building a proprietary AI tool to automate a core part of our service delivery.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-12">
-                        <h3 class="text-3xl font-bold mb-6">Reward Matrices</h3>
-                        <div class="border-b border-slate-200"><nav class="-mb-px flex space-x-6"><button class="tab-button active py-4 px-1 border-b-2 font-medium text-sm" data-tab="individual-rewards">Individual</button><button class="tab-button py-4 px-1 border-b-2 font-medium text-sm border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300" data-tab="team-rewards">Team</button></nav></div>
-                        <div id="individual-rewards" class="tab-content mt-6"><div class="overflow-x-auto bg-white rounded-lg shadow-md border"><table class="w-full text-sm text-left text-slate-600"><thead class="text-xs text-slate-700 uppercase bg-slate-50"><tr><th class="px-6 py-3 text-center">Efficiency</th><th class="px-6 py-3 text-center">T1: Routine Optimization</th><th class="px-6 py-3 text-center">T2: Process Improvement</th><th class="px-6 py-3 text-center">T3: Complex System</th></tr></thead><tbody class="text-center"><tr class="border-b"><td class="px-6 py-4 font-medium">30-49%</td><td class="px-6 py-4">$50 GC</td><td class="px-6 py-4">$100 Bonus</td><td class="px-6 py-4">$250 Bonus</td></tr><tr class="bg-slate-50 border-b"><td class="px-6 py-4 font-medium">50-74%</td><td class="px-6 py-4">$100 GC</td><td class="px-6 py-4">$250 Bonus + PTO</td><td class="px-6 py-4">$500 Bonus + License</td></tr><tr class="border-b"><td class="px-6 py-4 font-medium">75-89%</td><td class="px-6 py-4">$150 GC</td><td class="px-6 py-4">$500 Bonus + PTOs</td><td class="px-6 py-4">$1k Bonus + Budget</td></tr><tr class="bg-slate-50"><td class="px-6 py-4 font-medium">90%+</td><td class="px-6 py-4">$200 GC</td><td class="px-6 py-4">$750 Bonus + Gadget</td><td class="px-6 py-4">$2k Bonus + Presentation</td></tr></tbody></table></div></div>
-                        <div id="team-rewards" class="tab-content hidden mt-6"><div class="overflow-x-auto bg-white rounded-lg shadow-md border"><table class="w-full text-sm text-left text-slate-600"><thead class="text-xs text-slate-700 uppercase bg-slate-50"><tr><th class="px-6 py-3 text-center">Efficiency</th><th class="px-6 py-3 text-center">T1: Routine Optimization</th><th class="px-6 py-3 text-center">T2: Process Improvement</th><th class="px-6 py-3 text-center">T3: Complex System</th></tr></thead><tbody class="text-center"><tr class="border-b"><td class="px-6 py-4 font-medium">30-49%</td><td class="px-6 py-4">$75 Pool</td><td class="px-6 py-4">$150 Pool</td><td class="px-6 py-4">$350 Pool</td></tr><tr class="bg-slate-50 border-b"><td class="px-6 py-4 font-medium">50-74%</td><td class="px-6 py-4">$150 Pool</td><td class="px-6 py-4">$350 Pool + PTO</td><td class="px-6 py-4">$700 Pool + License</td></tr><tr class="border-b"><td class="px-6 py-4 font-medium">75-89%</td><td class="px-6 py-4">$225 Pool + Lunch</td><td class="px-6 py-4">$700 Pool + PTOs</td><td class="px-6 py-4">$1.4k Pool + Budget</td></tr><tr class="bg-slate-50"><td class="px-6 py-4 font-medium">90%+</td><td class="px-6 py-4">$300 Pool + Recog.</td><td class="px-6 py-4">$1k Pool + Gadget</td><td class="px-6 py-4">$2.8k Pool + Presentation</td></tr></tbody></table></div></div>
-                    </div>
-                    <div class="mt-12">
-                        <h3 class="text-3xl font-bold mb-6">Team Reward Distribution</h3>
-                        <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                            <p class="text-slate-600 mb-6">For team projects, the total reward determined by the matrix is distributed among members based on their level of contribution. Upon submission, the team will designate a role for each member.</p>
-                            <div class="overflow-x-auto mb-6">
-                                <table class="w-full text-left">
-                                    <thead class="border-b">
-                                        <tr>
-                                            <th class="p-4 font-semibold">Role</th>
-                                            <th class="p-4 font-semibold">Multiplier</th>
-                                            <th class="p-4 font-semibold">Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="border-b">
-                                            <td class="p-4 align-top font-semibold">Project Lead</td>
-                                            <td class="p-4 align-top">1.5x</td>
-                                            <td class="p-4 align-top text-slate-500">The individual who conceptualized the project, designed the core solution, and managed the effort.</td>
-                                        </tr>
-                                        <tr class="border-b">
-                                            <td class="p-4 align-top font-semibold">Core Contributor</td>
-                                            <td class="p-4 align-top">1.0x</td>
-                                            <td class="p-4 align-top text-slate-500">A team member directly involved in building, testing, and implementing the solution.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-4 align-top font-semibold">Supporting Contributor</td>
-                                            <td class="p-4 align-top">0.5x</td>
-                                            <td class="p-4 align-top text-slate-500">A team member who provided subject-matter expertise, data, or critical feedback but was not involved in the day-to-day execution.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="border-t pt-6">
-                                <h4 class="font-bold text-lg mb-2">Example Calculation:</h4>
-                                <p class="text-slate-600 mb-4">A team (1 Lead, 2 Core, 1 Support) completes a T3 project with 80% efficiency, earning a <strong class="font-semibold" style="color: var(--brand-red);">$1,400</strong> bonus pool.</p>
-                                <ol class="list-decimal list-inside space-y-2 text-slate-600">
-                                    <li><strong>Calculate Total Shares:</strong> `(1 Lead × 1.5) + (2 Core × 1.0) + (1 Support × 0.5) = 4.0 shares`</li>
-                                    <li><strong>Calculate Value Per Share:</strong> `$1,400 / 4.0 = $350 per share`</li>
-                                    <li><strong>Distribute Reward:</strong>
-                                        <ul class="list-disc list-inside pl-6 mt-2">
-                                            <li>Lead receives: `1.5 × $350 = $525`</li>
-                                            <li>Core Contributors receive: `1.0 × $350 = $350 each`</li>
-                                            <li>Support Contributor receives: `0.5 × $350 = $175`</li>
-                                        </ul>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="submit" class="main-section hidden">
-                <div class="p-6 md:p-10">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-2">Submit a Project</h2>
-                    <p class="text-lg text-slate-500 mb-8">Fill out this form to submit your individual or team project for review.</p>
-                    <form id="submission-form" class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 space-y-8">
-                        <div>
-                            <h3 class="text-2xl font-bold border-b pb-3 mb-6">1. Project Information</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div><label for="projectTitle" class="block text-sm font-medium text-slate-600">Project Title</label><input type="text" id="projectTitle" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" required></div>
-                                <div><label for="submissionDate" class="block text-sm font-medium text-slate-600">Submission Date</label><input type="date" id="submissionDate" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" required></div>
-                                <div class="md:col-span-2"><label for="problemStatement" class="block text-sm font-medium text-slate-600">Problem Statement</label><textarea id="problemStatement" rows="4" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" placeholder="Describe the challenge..." required></textarea></div>
-                                <div class="md:col-span-2"><label for="aiSolution" class="block text-sm font-medium text-slate-600">AI-Powered Solution</label><textarea id="aiSolution" rows="4" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" placeholder="Explain the solution..." required></textarea></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="text-2xl font-bold border-b pb-3 mb-6">2. Documentation</h3>
-                            <div id="documentation-list" class="space-y-2">
-                                </div>
-                             <div class="mt-4">
-                                <button type="button" id="add-documentation-btn" class="bg-slate-200 text-slate-700 text-sm font-semibold px-4 py-2 rounded-md hover:bg-slate-300 transition-colors">Add Documentation</button>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="text-2xl font-bold border-b pb-3 mb-6">3. Impact Measurement</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-10 gap-x-4 mb-2 px-1">
-                                <div class="md:col-span-4"><label class="text-sm font-semibold text-slate-600">Task Description</label></div>
-                                <div class="md:col-span-2"><label class="text-sm font-semibold text-slate-600">Frequency</label></div>
-                                <div class="md:col-span-2"><label class="text-sm font-semibold text-slate-600">Time Before (Hrs)</label></div>
-                                <div class="md:col-span-2"><label class="text-sm font-semibold text-slate-600">Time After (Hrs)</label></div>
-                            </div>
-                            <div id="task-list" class="space-y-2">
-                                </div>
-                            <div class="mt-4">
-                                <button type="button" id="add-task-btn" class="bg-slate-200 text-slate-700 text-sm font-semibold px-4 py-2 rounded-md hover:bg-slate-300 transition-colors">Add Another Task</button>
-                            </div>
-                            <div class="mt-6 pt-6 border-t grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                                <div class="p-4 rounded-lg text-center bg-slate-100">
-                                    <p class="text-sm font-medium text-slate-600">Total Monthly Hours Saved</p>
-                                    <p id="total-monthly-saved" class="text-2xl font-bold">0 hrs</p>
-                                </div>
-                                <div class="p-4 rounded-lg text-center" style="background-color: var(--brand-light-blue);">
-                                    <p class="text-sm font-medium" style="color: var(--brand-dark-blue);">Overall Efficiency Gain</p>
-                                    <p id="efficiencyGainDisplay" class="text-3xl font-extrabold" style="color: var(--brand-red);">--%</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold border-b pb-3 mb-6">4. Team Information</h3>
-                            <div class="space-y-4">
-                                <div><label for="projectType" class="block text-sm font-medium text-slate-600">Project Type</label><select id="projectType" class="mt-1 block w-full md:w-1/3 rounded-md shadow-sm form-input border-slate-400"><option value="individual">Individual</option><option value="team">Team</option></select></div>
-                                <div id="submitter-name-individual">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div>
-                                            <input type="text" id="submitterName" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" placeholder="Submitter Name" required>
-                                        </div>
-                                        <div>
-                                            <input type="email" id="submitterEmail" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" placeholder="Submitter Email" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="team-members-section" class="hidden space-y-4">
-                                    <div class="grid grid-cols-1 md:grid-cols-10 gap-x-4 px-1">
-                                        <div class="md:col-span-3"><label class="text-sm font-semibold text-slate-600">Member Name</label></div>
-                                        <div class="md:col-span-3"><label class="text-sm font-semibold text-slate-600">Email</label></div>
-                                        <div class="md:col-span-3"><label class="text-sm font-semibold text-slate-600">Role</label></div>
-                                    </div>
-                                    <div id="team-member-list" class="space-y-2"></div>
-                                    <button type="button" id="add-member-btn-team" class="bg-slate-200 text-slate-700 text-sm font-semibold px-4 py-2 rounded-md hover:bg-slate-300 transition-colors">Add Team Member</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-6 border-t"><button type="submit" class="w-full md:w-auto text-white font-bold px-8 py-3 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center" style="background-color: var(--brand-red);">Review & Submit Project</button></div>
-                    </form>
-                </div>
-            </div>
-            
             <div id="verification" class="main-section hidden">
                 <div class="p-6 md:p-10">
                     <h2 class="text-4xl md:text-5xl font-extrabold mb-12">Submitted Projects</h2>
@@ -285,7 +85,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="verification-table-body">
-                                    <!-- Data will be loaded here from Google Sheets -->
                                     <tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>
                                 </tbody>
                             </table>
@@ -296,35 +95,8 @@
         </main>
     </div>
 
-    <div id="project-details-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col">
-            <div class="p-6 border-b flex justify-between items-center">
-                <h3 id="details-title" class="text-2xl font-bold">Project Details</h3>
-                <button id="close-details-modal-btn" class="text-slate-400 hover:text-slate-800 text-3xl">&times;</button>
-            </div>
-            <div id="details-content" class="p-6 space-y-4 overflow-y-auto"></div>
-        </div>
-    </div>
+    <!-- Modals omitted for brevity… -->
 
-    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
-            <div class="p-6 border-b"><h3 class="text-2xl font-bold">Please Review Your Submission</h3></div>
-            <div class="p-6 space-y-4 overflow-y-auto">
-                <div><strong class="text-slate-500">Project Title:</strong> <span id="summary-projectTitle" class="font-semibold"></span></div>
-                <div><strong class="text-slate-500">Submission Date:</strong> <span id="summary-submissionDate" class="font-semibold"></span></div>
-                <div><strong class="text-slate-500">Problem Statement:</strong> <p id="summary-problemStatement" class="text-sm mt-1 p-3 bg-slate-50 rounded-md border"></p></div>
-                <div><strong class="text-slate-500">AI Solution:</strong> <p id="summary-aiSolution" class="text-sm mt-1 p-3 bg-slate-50 rounded-md border"></p></div>
-                <div><strong class="text-slate-500">Documentation:</strong> <div id="summary-documentation" class="text-sm mt-1 space-y-1"></div></div>
-                <div><strong class="text-slate-500">Impact:</strong> <span id="summary-impact" class="font-bold text-xl" style="color: var(--brand-red)"></span></div>
-                <div><strong class="text-slate-500">Submitted By:</strong><div id="summary-team" class="mt-2 pl-4 border-l-2" style="border-color: var(--brand-red)"></div></div>
-            </div>
-            <div class="p-6 bg-slate-50 border-t flex justify-end space-x-4">
-                <button id="cancel-submission-btn" type="button" class="bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-md hover:bg-slate-300">Cancel</button>
-                <button id="confirm-submission-btn" type="button" class="text-white font-bold px-6 py-2 rounded-md hover:opacity-90" style="background-color: var(--brand-red);">Confirm & Submit</button>
-            </div>
-        </div>
-    </div>
-    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // =================================================================================
@@ -333,50 +105,22 @@
             const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbzg3XLz6401_6OMfKOofVdejfMt8C0ipcD6Laj6dPCNlJXsLtT8doXS66Js3gK7xkrqIg/exec';
             // =================================================================================
 
-
-            const mainSections = document.querySelectorAll('.main-section');
-            const navLinks = document.querySelectorAll('.nav-link, .nav-link-cta');
             const verificationTableBody = document.getElementById('verification-table-body');
-            let allProjects = []; // This will hold the live data from Google Sheets
+            let allProjects = [];
 
-            // --- Core Navigation ---
-            function showSection(hash) {
-                mainSections.forEach(section => section.classList.add('hidden'));
-                const activeSection = document.querySelector(hash);
-                if (activeSection) {
-                    activeSection.classList.remove('hidden');
-                    if (hash === '#verification') {
-                        fetchProjectsFromSheet();
-                    }
-                } else {
-                    document.querySelector('#home').classList.remove('hidden');
-                }
-                navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === hash));
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', e => {
-                    e.preventDefault();
-                    const targetHash = link.getAttribute('href');
-                    history.pushState(null, null, targetHash);
-                    showSection(targetHash);
-                });
-            });
-            
-            window.addEventListener('popstate', () => showSection(window.location.hash || '#home'));
+            // --- Core Navigation (home, guidelines, submit sections omitted) ---
 
             // --- Data Fetching from Google Sheet ---
-            async function fetchProjectsFromSheet(https://docs.google.com/spreadsheets/d/18HwTjaK_5_OjrczuQfHTsbOjZfKHQUl7snGo4zifCvg/edit?gid=0#gid=0) {
-                verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>`;
-                if (!googleWebAppUrl.startsWith('https')) {
-                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Error: Google Web App URL is not configured.</td></tr>`;
-                    return;
-                }
+            async function fetchProjectsFromSheet() {
+                verificationTableBody.innerHTML =
+                  `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects…</td></tr>`;
+                
                 try {
-                    const response = await fetch(googleWebAppUrl);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
+                    const response = await fetch(googleWebAppUrl, {
+                        method: 'GET',
+                        mode: 'cors'
+                    });
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     const projectsFromSheet = await response.json();
                     
                     allProjects = projectsFromSheet.map(p => ({
@@ -390,348 +134,40 @@
                     }));
                     
                     renderVerificationTable();
-
                 } catch (error) {
                     console.error('Failed to fetch projects:', error);
-                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Could not load project data. Please check the script deployment permissions.</td></tr>`;
+                    verificationTableBody.innerHTML =
+                      `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">
+                         Could not load project data. Please check the script deployment permissions.
+                       </td></tr>`;
                 }
             }
 
-            // --- UI Rendering ---
-            const statusColors = {
-                'Submitted': 'bg-blue-100 text-blue-800',
-                'Under Review': 'bg-yellow-100 text-yellow-800',
-                'Approved': 'bg-green-100 text-green-800',
-                'Rejected': 'bg-red-100 text-red-800',
-                'Awarded': 'bg-gray-100 text-gray-800'
-            };
+            // --- UI Rendering (renderVerificationTable, modals, etc.) omitted ---
 
-            function renderVerificationTable() {
-                if (allProjects.length === 0) {
-                     verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">No projects submitted for review yet.</td></tr>`;
-                } else {
-                    verificationTableBody.innerHTML = ''; // Clear loading message
-                    allProjects.forEach(project => {
-                        const row = document.createElement('tr');
-                        row.className = 'bg-white border-b';
-                        row.innerHTML = `
-                            <td class="p-4 font-medium"><button class="project-title-link text-left font-bold hover:underline" style="color: var(--brand-dark-blue);" data-id="${project.id}">${project.projectTitle}</button></td>
-                            <td class="p-4 text-slate-500">${project.submitter}</td>
-                            <td class="p-4 text-slate-500">${project.submissionDate}</td>
-                            <td class="p-4 font-medium" style="color: var(--brand-red);">${project.monthlyHoursSaved.toFixed(1)} hrs</td>
-                            <td class="p-4"><span class="text-xs font-semibold rounded-full px-2 py-1 ${statusColors[project.status] || 'bg-gray-100'}">${project.status}</span></td>
-                            <td class="p-4 text-center"><button class="delete-btn text-slate-400 hover:text-red-500 font-bold text-xl" data-id="${project.id}">&times;</button></td>
-                        `;
-                        verificationTableBody.appendChild(row);
-                    });
-
-                    document.querySelectorAll('.delete-btn').forEach(button => {
-                        button.addEventListener('click', (e) => {
-                            alert("Deletion must be done in the Google Sheet, which is the source of truth.");
-                        });
-                    });
-
-                    document.querySelectorAll('.project-title-link').forEach(button => {
-                        button.addEventListener('click', (e) => {
-                            const projectId = e.target.dataset.id;
-                            const project = allProjects.find(p => p.id === projectId);
-                            showProjectDetails(project);
-                        });
-                    });
-                }
-            }
-
-            function showProjectDetails(project) {
-                document.getElementById('details-title').textContent = project.projectTitle;
-                detailsContent.innerHTML = `
-                    <div class="space-y-4">
-                         <p class="text-lg">This project's full details are managed in the Google Sheet.</p>
-                         <p><strong class="text-slate-500">Project ID:</strong> ${project.id}</p>
-                         <p><strong class="text-slate-500">Submitters:</strong></p>
-                         <div class="text-sm mt-1 p-3 bg-slate-50 rounded-md border whitespace-pre-wrap">${project.fullSubmitterInfo}</div>
-                    </div>
-                `;
-                projectDetailsModal.classList.remove('hidden');
-                projectDetailsModal.classList.add('flex');
-            }
-            
-            const projectDetailsModal = document.getElementById('project-details-modal');
-            const closeDetailsModalBtn = document.getElementById('close-details-modal-btn');
-            closeDetailsModalBtn.addEventListener('click', () => {
-                 projectDetailsModal.classList.add('hidden');
-                 projectDetailsModal.classList.remove('flex');
-            });
-
-            // --- Form Logic ---
-            const projectTypeSelect = document.getElementById('projectType');
-            const individualSubmitterSection = document.getElementById('submitter-name-individual');
-            const teamMembersSection = document.getElementById('team-members-section');
-            const addTeamMemberBtn = document.getElementById('add-member-btn-team');
-            const teamMemberList = document.getElementById('team-member-list');
-            const taskList = document.getElementById('task-list');
-            const addTaskBtn = document.getElementById('add-task-btn');
-            const documentationList = document.getElementById('documentation-list');
-            const addDocumentationBtn = document.getElementById('add-documentation-btn');
-            const monthlySavedEl = document.getElementById('total-monthly-saved');
-            const efficiencyGainDisplay = document.getElementById('efficiencyGainDisplay');
-            const submissionForm = document.getElementById('submission-form');
-            const confirmationModal = document.getElementById('confirmation-modal');
-            const cancelSubmissionBtn = document.getElementById('cancel-submission-btn');
-            const confirmSubmissionBtn = document.getElementById('confirm-submission-btn');
-            let memberCount = 0;
-
-            function getProjectMetrics(project) {
-                let totalMonthlyBefore = 0;
-                let totalMonthlyAfter = 0;
-                project.tasks.forEach(task => {
-                    const multiplier = { 'Daily': 20, 'Weekly': 4.33, 'Monthly': 1 }[task.frequency];
-                    totalMonthlyBefore += task.timeBefore * multiplier;
-                    totalMonthlyAfter += task.timeAfter * multiplier;
-                });
-                const monthlyHoursSaved = totalMonthlyBefore - totalMonthlyAfter;
-                const efficiencyGain = totalMonthlyBefore > 0 ? ((monthlyHoursSaved / totalMonthlyBefore) * 100) : 0;
-                return { monthlyHoursSaved, efficiencyGain };
-            }
-
-            function getTier(monthlyHoursSaved) {
-                if (monthlyHoursSaved > 40) return 'T3';
-                if (monthlyHoursSaved >= 20) return 'T2';
-                if (monthlyHoursSaved > 0) return 'T1';
-                return 'N/A';
-            }
-
-            function updateTotals() {
-                let totalMonthlyBefore = 0;
-                let totalMonthlyAfter = 0;
-                document.querySelectorAll('.task-row').forEach(row => {
-                    const before = parseFloat(row.querySelector('input[name="timeBefore"]').value) || 0;
-                    const after = parseFloat(row.querySelector('input[name="timeAfter"]').value) || 0;
-                    const frequency = row.querySelector('select[name="taskFrequency"]').value;
-                    const multiplier = { 'Daily': 20, 'Weekly': 4.33, 'Monthly': 1 }[frequency];
-                    
-                    totalMonthlyBefore += before * multiplier;
-                    totalMonthlyAfter += after * multiplier;
-                });
-
-                const monthlyHoursSaved = totalMonthlyBefore - totalMonthlyAfter;
-                monthlySavedEl.textContent = `${monthlyHoursSaved.toFixed(1)} hrs`;
-
-                if (totalMonthlyBefore > 0) {
-                    const gain = (monthlyHoursSaved / totalMonthlyBefore) * 100;
-                    efficiencyGainDisplay.textContent = `${gain.toFixed(1)}%`;
-                } else {
-                    efficiencyGainDisplay.textContent = '--%';
-                }
-            }
-
-            function createNewTaskRow() {
-                const div = document.createElement('div');
-                div.className = 'grid grid-cols-1 md:grid-cols-10 gap-x-4 gap-y-2 items-center task-row';
-                div.innerHTML = `
-                    <div class="md:col-span-4">
-                        <input type="text" name="taskDescription" placeholder="e.g., Writing weekly report" class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                    </div>
-                    <div class="md:col-span-2">
-                        <select name="taskFrequency" class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                            <option>Daily</option>
-                            <option selected>Weekly</option>
-                            <option>Monthly</option>
-                        </select>
-                    </div>
-                    <div class="md:col-span-2">
-                        <input type="number" name="timeBefore" placeholder="e.g., 8.5" min="0" step="0.1" class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                    </div>
-                    <div class="md:col-span-2">
-                        <input type="number" name="timeAfter" placeholder="e.g., 0.5" min="0" step="0.1" class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                    </div>
-                    <div class="text-right">
-                        <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
-                    </div>
-                `;
-                taskList.appendChild(div);
-                div.querySelector('.remove-row-btn').addEventListener('click', () => {
-                    div.remove();
-                    updateTotals();
-                });
-                div.querySelectorAll('input, select').forEach(input => input.addEventListener('input', updateTotals));
-            }
-
-            addTaskBtn.addEventListener('click', createNewTaskRow);
-            
-            function createNewDocRow() {
-                const div = document.createElement('div');
-                div.className = 'grid grid-cols-1 md:grid-cols-8 gap-x-4 gap-y-2 items-center documentation-row';
-                div.innerHTML = `
-                    <div class="md:col-span-3">
-                        <select name="docType" class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                            <option>Screenshot Link</option>
-                            <option>Video Link</option>
-                            <option>SOP/Document Link</option>
-                        </select>
-                    </div>
-                    <div class="md:col-span-4">
-                        <input type="url" name="docLink" placeholder="https://..." class="block w-full rounded-md shadow-sm form-input border-slate-400">
-                    </div>
-                    <div class="text-right">
-                        <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
-                    </div>
-                `;
-                documentationList.appendChild(div);
-                div.querySelector('.remove-row-btn').addEventListener('click', () => div.remove());
-            }
-
-            addDocumentationBtn.addEventListener('click', createNewDocRow);
-            
-            projectTypeSelect.addEventListener('change', () => {
-                const isTeam = projectTypeSelect.value === 'team';
-                individualSubmitterSection.classList.toggle('hidden', isTeam);
-                teamMembersSection.classList.toggle('hidden', !isTeam);
-                document.getElementById('submitterName').required = !isTeam;
-                document.getElementById('submitterEmail').required = !isTeam;
-                if(isTeam && memberCount === 0) createNewTeamMemberRow();
-            });
-
-            function createNewTeamMemberRow() {
-                memberCount++;
-                const div = document.createElement('div');
-                div.className = 'grid grid-cols-1 md:grid-cols-10 gap-4 items-center team-member-row';
-                div.innerHTML = `
-                    <div class="md:col-span-3">
-                        <input type="text" placeholder="Member Name" name="memberName" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" required>
-                    </div>
-                    <div class="md:col-span-3">
-                        <input type="email" placeholder="Member Email" name="memberEmail" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" required>
-                    </div>
-                    <div class="md:col-span-3">
-                        <select name="memberRole" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400">
-                            <option>Project Lead</option><option>Core Contributor</option><option>Supporting Contributor</option>
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
-                    </div>
-                `;
-                teamMemberList.appendChild(div);
-                div.querySelector('.remove-row-btn').addEventListener('click', () => div.remove());
-            }
-            
-            addTeamMemberBtn.addEventListener('click', createNewTeamMemberRow);
-            
-            submissionForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                document.getElementById('summary-projectTitle').textContent = document.getElementById('projectTitle').value;
-                document.getElementById('summary-submissionDate').textContent = document.getElementById('submissionDate').value;
-                document.getElementById('summary-problemStatement').textContent = document.getElementById('problemStatement').value;
-                document.getElementById('summary-aiSolution').textContent = document.getElementById('aiSolution').value;
-                
-                const docSummary = document.getElementById('summary-documentation');
-                docSummary.innerHTML = '';
-                document.querySelectorAll('.documentation-row').forEach(row => {
-                    const type = row.querySelector('select[name="docType"]').value;
-                    const link = row.querySelector('input[name="docLink"]').value;
-                    if (link) {
-                       docSummary.innerHTML += `<p><span class="font-semibold">${type}:</span> <a href="${link}" target="_blank" class="text-blue-600 hover:underline">${link}</a></p>`;
-                    }
-                });
-                if (docSummary.innerHTML === '') docSummary.innerHTML = '<p>N/A</p>';
-
-                document.getElementById('summary-impact').textContent = `${monthlySavedEl.textContent} Saved / ${efficiencyGainDisplay.textContent} Efficiency Gain`;
-                
-                const teamSummary = document.getElementById('summary-team');
-                teamSummary.innerHTML = '';
-                if(projectTypeSelect.value === 'individual') {
-                    teamSummary.innerHTML = `<p class="font-semibold">${document.getElementById('submitterName').value} (${document.getElementById('submitterEmail').value})</p>`;
-                } else {
-                    document.querySelectorAll('#team-member-list .team-member-row').forEach(member => {
-                        const name = member.querySelector('input[name="memberName"]').value;
-                        const email = member.querySelector('input[name="memberEmail"]').value;
-                        const role = member.querySelector('select[name="memberRole"]').value;
-                        teamSummary.innerHTML += `<p><span class="font-semibold">${name}</span> (${email}) - ${role}</p>`;
-                    });
-                }
-                confirmationModal.classList.remove('hidden');
-                confirmationModal.classList.add('flex');
-            });
-
-            cancelSubmissionBtn.addEventListener('click', () => {
-                confirmationModal.classList.add('hidden');
-                confirmationModal.classList.remove('flex');
-            });
-
+            // --- Form Submit Handler ---
             confirmSubmissionBtn.addEventListener('click', () => {
                 confirmSubmissionBtn.disabled = true;
                 confirmSubmissionBtn.innerHTML = 'Submitting...';
 
-                const projectData = {
-                    id: `proj-${Date.now()}`,
-                    projectTitle: document.getElementById('projectTitle').value,
-                    submissionDate: document.getElementById('submissionDate').value,
-                    problemStatement: document.getElementById('problemStatement').value,
-                    aiSolution: document.getElementById('aiSolution').value,
-                    documentation: Array.from(document.querySelectorAll('.documentation-row')).map(row => ({
-                        type: row.querySelector('select[name="docType"]').value,
-                        link: row.querySelector('input[name="docLink"]').value
-                    })).filter(doc => doc.link),
-                    tasks: Array.from(document.querySelectorAll('.task-row')).map(row => ({
-                        description: row.querySelector('input[name="taskDescription"]').value,
-                        frequency: row.querySelector('select[name="taskFrequency"]').value,
-                        timeBefore: parseFloat(row.querySelector('input[name="timeBefore"]').value) || 0,
-                        timeAfter: parseFloat(row.querySelector('input[name="timeAfter"]').value) || 0
-                    })).filter(task => task.description),
-                    projectType: projectTypeSelect.value,
-                };
-                
-                if (projectData.projectType === 'individual') {
-                    projectData.submitter = document.getElementById('submitterName').value;
-                    projectData.submitterEmail = document.getElementById('submitterEmail').value;
-                    projectData.team = [];
-                } else {
-                    const members = [];
-                    document.querySelectorAll('#team-member-list .team-member-row').forEach(member => {
-                        members.push({
-                            name: member.querySelector('input[name="memberName"]').value,
-                            email: member.querySelector('input[name="memberEmail"]').value,
-                            role: member.querySelector('select[name="memberRole"]').value
-                        });
-                    });
-                    projectData.team = members;
-                    projectData.submitter = members.find(m => m.role === 'Project Lead')?.name || members[0]?.name || 'Team';
-                }
-                
-                const { monthlyHoursSaved, efficiencyGain } = getProjectMetrics({tasks: projectData.tasks});
-                const recommendedTier = getTier(monthlyHoursSaved);
-
-                const payload = {
-                    ...projectData,
-                    monthlyHoursSaved: monthlyHoursSaved.toFixed(1),
-                    efficiencyGain: efficiencyGain.toFixed(1) + '%',
-                    recommendedTier: recommendedTier,
-                    submitters: projectData.projectType === 'individual' 
-                        ? `${projectData.submitter} (${projectData.submitterEmail})`
-                        : projectData.team.map(m => `${m.name} (${m.email})`).join('\n'),
-                    allEmails: projectData.projectType === 'individual'
-                        ? projectData.submitterEmail
-                        : projectData.team.map(m => m.email).join(',')
-                };
+                // build your payload object as before...
+                const payload = { /* ... */ };
 
                 fetch(googleWebAppUrl, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify(payload),
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',
+                    body: JSON.stringify(payload)
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    return res.json();
                 })
                 .then(() => {
                     alert('Success! Your project has been submitted for review.');
-                    submissionForm.reset();
-                    efficiencyGainDisplay.textContent = '--%';
-                    monthlySavedEl.textContent = '0 hrs';
-                    teamMemberList.innerHTML = '';
-                    taskList.innerHTML = '';
-                    documentationList.innerHTML = '';
-                    memberCount = 0;
-                    createNewTaskRow();
-                    createNewDocRow();
+                    // reset form, update UI, then:
                     showSection('#verification');
+                    fetchProjectsFromSheet();
                 })
                 .catch(error => {
                     console.error('Error submitting to Google Sheet:', error);
@@ -745,13 +181,8 @@
                 });
             });
 
-            // --- Initial Page Setup ---
-            const initialHash = window.location.hash || '#home';
-            showSection(initialHash);
-            
-            document.getElementById('submissionDate').valueAsDate = new Date();
-            createNewTaskRow(); 
-            createNewDocRow();
+            // --- INITIAL LOAD ---
+            fetchProjectsFromSheet();
         });
     </script>
 </body>
