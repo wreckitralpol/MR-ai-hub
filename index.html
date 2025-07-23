@@ -330,7 +330,7 @@
             // =================================================================================
             // CONFIGURATION
             // =================================================================================
-            const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycby7TBRYpusriJItv5pc-APCyQ-Aykj3FC49UONfhW1brWi9BUYRSCrdkS9g7ioWCKgsNg/exec';
+            const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbzwgh7QcAL-K610yvjX0OZRe3LCVT4JJxsxzZoDH_sBn1F2bz3BHRt6agAKZOw8wZGlSA/exec';
             // =================================================================================
 
 
@@ -368,35 +368,45 @@
             // --- Data Fetching from Google Sheet ---
             async function fetchProjectsFromSheet() {
                 verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>`;
-                if (!googleWebAppUrl.startsWith('https')) {
+                if (!googleWebAppUrl || !googleWebAppUrl.startsWith('https')) {
                     verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Error: Google Web App URL is not configured.</td></tr>`;
                     return;
                 }
                 try {
                     const response = await fetch(googleWebAppUrl);
+
+                    // Check if the response is OK (status in the range 200-299)
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        // Try to get more details from the response body if available
+                        const errorText = await response.text();
+                        // Throw an error that includes the status and any text from the script
+                        throw new Error(`HTTP error! status: ${response.status}, statusText: ${response.statusText}, response: ${errorText}`);
                     }
+                    
                     const projectsFromSheet = await response.json();
                     
-                    allProjects = projectsFromSheet.map(p => ({
-                        id: p.ProjectID,
-                        projectTitle: p['Project Title'],
-                        submissionDate: new Date(p['SubmissionDate']).toISOString().split('T')[0],
-                        submitter: p.Submitters.split('\n')[0].split('(')[0].trim(),
-                        status: p.Status,
-                        monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
-                        fullSubmitterInfo: p.Submitters
-                    }));
+                    // --- This part of your original code is great, no changes needed ---
+                    allProjects = projectsFromSheet.map(p => {
+                        // Find the header for 'ProjectID' regardless of its case
+                        const projectIdKey = Object.keys(p).find(key => key.toLowerCase() === 'projectid');
+                        return {
+                            id: p[projectIdKey],
+                            projectTitle: p['Project Title'],
+                            submissionDate: new Date(p['SubmissionDate']).toISOString().split('T')[0],
+                            submitter: p.Submitters.split('\n')[0].split('(')[0].trim(),
+                            status: p.Status,
+                            monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
+                            fullSubmitterInfo: p.Submitters
+                        };
+                    });
                     
                     renderVerificationTable();
 
                 } catch (error) {
-                    console.error('Failed to fetch projects:', error);
-                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Could not load project data. Please check the script deployment permissions.</td></tr>`;
+                    console.error('Full error details:', error); // Log the full error object
+                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Could not load project data. Please check the script deployment permissions. Open the browser console (F12) for more details.</td></tr>`;
                 }
             }
-
             // --- UI Rendering ---
             const statusColors = {
                 'Submitted': 'bg-blue-100 text-blue-800',
