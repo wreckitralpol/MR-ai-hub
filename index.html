@@ -331,7 +331,7 @@
             // =================================================================================
             // CONFIGURATION
             // =================================================================================
-            const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbzFjF2ywa3mIwxz_8DdKXCEw6Mk3U8D8npKTR4_2clYNy0Mn1OIUurXBdoLZVUOHEoB/exec';
+            const googleWebAppUrl = 'https://script.google.com/macros/s/AKfycbwlk3cVId8efy7S4Ih1rKeZEIHYQnzFf3Lufmw0yH3IfP8jx_vw6fbgw66KfT4P0k8T/exec';
             // =================================================================================
 
 
@@ -731,32 +731,12 @@
                     headers: { 'Content-Type': 'application/json' }
                 })
                 .then(response => {
-                    if (!response.ok) {
-                        // If the response is not OK, we still need to parse it to see the error from the script
-                        return response.json().then(err => { throw new Error(err.error || `HTTP ${response.status}`) });
-                    }
-                    return response.json();
+                    //... (the .then block is fine)
                 })
-                .then(data => {
-                    if (data.result === 'success') {
-                        alert('Success! Your project has been submitted for review.');
-                        submissionForm.reset();
-                        efficiencyGainDisplay.textContent = '--%';
-                        monthlySavedEl.textContent = '0 hrs';
-                        teamMemberList.innerHTML = '';
-                        taskList.innerHTML = '';
-                        documentationList.innerHTML = '';
-                        memberCount = 0;
-                        createNewTaskRow();
-                        createNewDocRow();
-                        showSection('#verification');
-                    } else {
-                        throw new Error(data.error || 'Unknown error from Google Script.');
-                    }
-                })
+                // REPLACE THE .catch() BLOCK WITH THIS:
                 .catch(error => {
                     console.error('Error submitting to Google Sheet:', error);
-                    alert('There was an error submitting your project. Please try again.');
+                    alert('There was an error submitting your project. Please open the browser console (F12) to see details and try again.');
                 })
                 .finally(() => {
                     confirmSubmissionBtn.disabled = false;
