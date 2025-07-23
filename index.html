@@ -173,13 +173,13 @@
                                 <h4 class="font-bold text-lg mb-2">Example Calculation:</h4>
                                 <p class="text-slate-600 mb-4">A team (1 Lead, 2 Core, 1 Support) completes a T3 project with 80% efficiency, earning a <strong class="font-semibold" style="color: var(--brand-red);">$1,400</strong> bonus pool.</p>
                                 <ol class="list-decimal list-inside space-y-2 text-slate-600">
-                                    <li><strong>Calculate Total Shares:</strong> (1 Lead × 1.5) + (2 Core × 1.0) + (1 Support × 0.5) = 4.0 shares</li>
-                                    <li><strong>Calculate Value Per Share:</strong> $1,400 / 4.0 = $350 per share</li>
+                                    <li><strong>Calculate Total Shares:</strong> `(1 Lead × 1.5) + (2 Core × 1.0) + (1 Support × 0.5) = 4.0 shares`</li>
+                                    <li><strong>Calculate Value Per Share:</strong> `$1,400 / 4.0 = $350 per share`</li>
                                     <li><strong>Distribute Reward:</strong>
                                         <ul class="list-disc list-inside pl-6 mt-2">
-                                            <li>Lead receives: 1.5 × $350 = $525</li>
-                                            <li>Core Contributors receive: 1.0 × $350 = $350 each</li>
-                                            <li>Support Contributor receives: 0.5 × $350 = $175</li>
+                                            <li>Lead receives: `1.5 × $350 = $525`</li>
+                                            <li>Core Contributors receive: `1.0 × $350 = $350 each`</li>
+                                            <li>Support Contributor receives: `0.5 × $350 = $175`</li>
                                         </ul>
                                     </li>
                                 </ol>
@@ -366,43 +366,36 @@
             window.addEventListener('popstate', () => showSection(window.location.hash || '#home'));
 
             // --- Data Fetching from Google Sheet ---
-           async function fetchProjectsFromSheet() {
-  verificationTableBody.innerHTML =
-    `<tr><td colspan="6" class="text-center p-8 text-slate-500">
-      Loading projects…
-    </td></tr>`;
+            async function fetchProjectsFromSheet() {
+                verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">Loading projects...</td></tr>`;
+                if (!googleWebAppUrl.startsWith('https')) {
+                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Error: Google Web App URL is not configured.</td></tr>`;
+                    return;
+                }
+                try {
+                    const response = await fetch(googleWebAppUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const projectsFromSheet = await response.json();
+                    
+                    allProjects = projectsFromSheet.map(p => ({
+                        id: p.ProjectID,
+                        projectTitle: p['Project Title'],
+                        submissionDate: new Date(p['SubmissionDate']).toISOString().split('T')[0],
+                        submitter: p.Submitters.split('\n')[0].split('(')[0].trim(),
+                        status: p.Status,
+                        monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
+                        fullSubmitterInfo: p.Submitters
+                    }));
+                    
+                    renderVerificationTable();
 
-  try {
-    // 👉 Use CORS mode & explicit GET
-    const response = await fetch(googleWebAppUrl, {
-      method: 'GET',
-      mode: 'cors'
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const projectsFromSheet = await response.json();
-    allProjects = projectsFromSheet.map(p => ({
-      id: p.ProjectID,
-      projectTitle: p['Project Title'],
-      submissionDate: new Date(p['SubmissionDate'])
-                        .toISOString().split('T')[0],
-      submitter: p.Submitters.split('\n')[0]
-                   .split('(')[0].trim(),
-      status: p.Status,
-      monthlyHoursSaved: parseFloat(p['Monthly Hours Saved']),
-      fullSubmitterInfo: p.Submitters
-    }));
-    renderVerificationTable();
-
-  } catch (error) {
-    console.error('Failed fetching projects:', error);
-    verificationTableBody.innerHTML =
-      `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">
-         Could not load project data. Please check the script deployment permissions.
-       </td></tr>`;
-  }
-}
-
+                } catch (error) {
+                    console.error('Failed to fetch projects:', error);
+                    verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-red-600 font-bold">Could not load project data. Please check the script deployment permissions.</td></tr>`;
+                }
+            }
 
             // --- UI Rendering ---
             const statusColors = {
@@ -415,20 +408,20 @@
 
             function renderVerificationTable() {
                 if (allProjects.length === 0) {
-                     verificationTableBody.innerHTML = <tr><td colspan="6" class="text-center p-8 text-slate-500">No projects submitted for review yet.</td></tr>;
+                     verificationTableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">No projects submitted for review yet.</td></tr>`;
                 } else {
                     verificationTableBody.innerHTML = ''; // Clear loading message
                     allProjects.forEach(project => {
                         const row = document.createElement('tr');
                         row.className = 'bg-white border-b';
-                        row.innerHTML = 
+                        row.innerHTML = `
                             <td class="p-4 font-medium"><button class="project-title-link text-left font-bold hover:underline" style="color: var(--brand-dark-blue);" data-id="${project.id}">${project.projectTitle}</button></td>
                             <td class="p-4 text-slate-500">${project.submitter}</td>
                             <td class="p-4 text-slate-500">${project.submissionDate}</td>
                             <td class="p-4 font-medium" style="color: var(--brand-red);">${project.monthlyHoursSaved.toFixed(1)} hrs</td>
                             <td class="p-4"><span class="text-xs font-semibold rounded-full px-2 py-1 ${statusColors[project.status] || 'bg-gray-100'}">${project.status}</span></td>
                             <td class="p-4 text-center"><button class="delete-btn text-slate-400 hover:text-red-500 font-bold text-xl" data-id="${project.id}">&times;</button></td>
-                        ;
+                        `;
                         verificationTableBody.appendChild(row);
                     });
 
@@ -450,14 +443,14 @@
 
             function showProjectDetails(project) {
                 document.getElementById('details-title').textContent = project.projectTitle;
-                detailsContent.innerHTML = 
+                detailsContent.innerHTML = `
                     <div class="space-y-4">
                          <p class="text-lg">This project's full details are managed in the Google Sheet.</p>
                          <p><strong class="text-slate-500">Project ID:</strong> ${project.id}</p>
                          <p><strong class="text-slate-500">Submitters:</strong></p>
                          <div class="text-sm mt-1 p-3 bg-slate-50 rounded-md border whitespace-pre-wrap">${project.fullSubmitterInfo}</div>
                     </div>
-                ;
+                `;
                 projectDetailsModal.classList.remove('hidden');
                 projectDetailsModal.classList.add('flex');
             }
@@ -521,11 +514,11 @@
                 });
 
                 const monthlyHoursSaved = totalMonthlyBefore - totalMonthlyAfter;
-                monthlySavedEl.textContent = ${monthlyHoursSaved.toFixed(1)} hrs;
+                monthlySavedEl.textContent = `${monthlyHoursSaved.toFixed(1)} hrs`;
 
                 if (totalMonthlyBefore > 0) {
                     const gain = (monthlyHoursSaved / totalMonthlyBefore) * 100;
-                    efficiencyGainDisplay.textContent = ${gain.toFixed(1)}%;
+                    efficiencyGainDisplay.textContent = `${gain.toFixed(1)}%`;
                 } else {
                     efficiencyGainDisplay.textContent = '--%';
                 }
@@ -534,7 +527,7 @@
             function createNewTaskRow() {
                 const div = document.createElement('div');
                 div.className = 'grid grid-cols-1 md:grid-cols-10 gap-x-4 gap-y-2 items-center task-row';
-                div.innerHTML = 
+                div.innerHTML = `
                     <div class="md:col-span-4">
                         <input type="text" name="taskDescription" placeholder="e.g., Writing weekly report" class="block w-full rounded-md shadow-sm form-input border-slate-400">
                     </div>
@@ -554,7 +547,7 @@
                     <div class="text-right">
                         <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
                     </div>
-                ;
+                `;
                 taskList.appendChild(div);
                 div.querySelector('.remove-row-btn').addEventListener('click', () => {
                     div.remove();
@@ -568,7 +561,7 @@
             function createNewDocRow() {
                 const div = document.createElement('div');
                 div.className = 'grid grid-cols-1 md:grid-cols-8 gap-x-4 gap-y-2 items-center documentation-row';
-                div.innerHTML = 
+                div.innerHTML = `
                     <div class="md:col-span-3">
                         <select name="docType" class="block w-full rounded-md shadow-sm form-input border-slate-400">
                             <option>Screenshot Link</option>
@@ -582,7 +575,7 @@
                     <div class="text-right">
                         <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
                     </div>
-                ;
+                `;
                 documentationList.appendChild(div);
                 div.querySelector('.remove-row-btn').addEventListener('click', () => div.remove());
             }
@@ -602,7 +595,7 @@
                 memberCount++;
                 const div = document.createElement('div');
                 div.className = 'grid grid-cols-1 md:grid-cols-10 gap-4 items-center team-member-row';
-                div.innerHTML = 
+                div.innerHTML = `
                     <div class="md:col-span-3">
                         <input type="text" placeholder="Member Name" name="memberName" class="mt-1 block w-full rounded-md shadow-sm form-input border-slate-400" required>
                     </div>
@@ -617,7 +610,7 @@
                     <div class="text-right">
                         <button type="button" class="remove-row-btn text-slate-400 hover:text-red-500 p-2 font-bold text-xl">&times;</button>
                     </div>
-                ;
+                `;
                 teamMemberList.appendChild(div);
                 div.querySelector('.remove-row-btn').addEventListener('click', () => div.remove());
             }
@@ -637,23 +630,23 @@
                     const type = row.querySelector('select[name="docType"]').value;
                     const link = row.querySelector('input[name="docLink"]').value;
                     if (link) {
-                       docSummary.innerHTML += <p><span class="font-semibold">${type}:</span> <a href="${link}" target="_blank" class="text-blue-600 hover:underline">${link}</a></p>;
+                       docSummary.innerHTML += `<p><span class="font-semibold">${type}:</span> <a href="${link}" target="_blank" class="text-blue-600 hover:underline">${link}</a></p>`;
                     }
                 });
                 if (docSummary.innerHTML === '') docSummary.innerHTML = '<p>N/A</p>';
 
-                document.getElementById('summary-impact').textContent = ${monthlySavedEl.textContent} Saved / ${efficiencyGainDisplay.textContent} Efficiency Gain;
+                document.getElementById('summary-impact').textContent = `${monthlySavedEl.textContent} Saved / ${efficiencyGainDisplay.textContent} Efficiency Gain`;
                 
                 const teamSummary = document.getElementById('summary-team');
                 teamSummary.innerHTML = '';
                 if(projectTypeSelect.value === 'individual') {
-                    teamSummary.innerHTML = <p class="font-semibold">${document.getElementById('submitterName').value} (${document.getElementById('submitterEmail').value})</p>;
+                    teamSummary.innerHTML = `<p class="font-semibold">${document.getElementById('submitterName').value} (${document.getElementById('submitterEmail').value})</p>`;
                 } else {
                     document.querySelectorAll('#team-member-list .team-member-row').forEach(member => {
                         const name = member.querySelector('input[name="memberName"]').value;
                         const email = member.querySelector('input[name="memberEmail"]').value;
                         const role = member.querySelector('select[name="memberRole"]').value;
-                        teamSummary.innerHTML += <p><span class="font-semibold">${name}</span> (${email}) - ${role}</p>;
+                        teamSummary.innerHTML += `<p><span class="font-semibold">${name}</span> (${email}) - ${role}</p>`;
                     });
                 }
                 confirmationModal.classList.remove('hidden');
@@ -670,7 +663,7 @@
                 confirmSubmissionBtn.innerHTML = 'Submitting...';
 
                 const projectData = {
-                    id: proj-${Date.now()},
+                    id: `proj-${Date.now()}`,
                     projectTitle: document.getElementById('projectTitle').value,
                     submissionDate: document.getElementById('submissionDate').value,
                     problemStatement: document.getElementById('problemStatement').value,
@@ -714,39 +707,53 @@
                     efficiencyGain: efficiencyGain.toFixed(1) + '%',
                     recommendedTier: recommendedTier,
                     submitters: projectData.projectType === 'individual' 
-                        ? ${projectData.submitter} (${projectData.submitterEmail})
-                        : projectData.team.map(m => ${m.name} (${m.email})).join('\n'),
+                        ? `${projectData.submitter} (${projectData.submitterEmail})`
+                        : projectData.team.map(m => `${m.name} (${m.email})`).join('\n'),
                     allEmails: projectData.projectType === 'individual'
                         ? projectData.submitterEmail
                         : projectData.team.map(m => m.email).join(',')
                 };
 
-             fetch(googleWebAppUrl, {
-  method: 'POST',
-  mode: 'cors',                           // ← changed here
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(payload)
-})
-.then(res => {
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-})
-.then(() => {
-  alert('Success! Your project has been submitted for review.');
-  // …your existing “reset form” logic…
-  showSection('#verification');
-  fetchProjectsFromSheet();
-})
-.catch(error => {
-  console.error('Error submitting to Google Sheet:', error);
-  alert('There was an error submitting your project. Please try again.');
-})
-.finally(() => {
-  confirmSubmissionBtn.disabled = false;
-  confirmSubmissionBtn.textContent = 'Confirm & Submit';
-  confirmationModal.classList.add('hidden');
-  confirmationModal.classList.remove('flex');
-});
+                fetch(googleWebAppUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        // If the response is not OK, we still need to parse it to see the error from the script
+                        return response.json().then(err => { throw new Error(err.error || `HTTP ${response.status}`) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.result === 'success') {
+                        alert('Success! Your project has been submitted for review.');
+                        submissionForm.reset();
+                        efficiencyGainDisplay.textContent = '--%';
+                        monthlySavedEl.textContent = '0 hrs';
+                        teamMemberList.innerHTML = '';
+                        taskList.innerHTML = '';
+                        documentationList.innerHTML = '';
+                        memberCount = 0;
+                        createNewTaskRow();
+                        createNewDocRow();
+                        showSection('#verification');
+                    } else {
+                        throw new Error(data.error || 'Unknown error from Google Script.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting to Google Sheet:', error);
+                    alert('There was an error submitting your project. Please try again.');
+                })
+                .finally(() => {
+                    confirmSubmissionBtn.disabled = false;
+                    confirmSubmissionBtn.innerHTML = 'Confirm & Submit';
+                    confirmationModal.classList.add('hidden');
+                    confirmationModal.classList.remove('flex');
+                });
+            });
 
             // --- Initial Page Setup ---
             const initialHash = window.location.hash || '#home';
