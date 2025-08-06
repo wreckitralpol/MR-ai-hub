@@ -726,9 +726,10 @@
                 };
 
                 fetch(googleWebAppUrl, {
+                    redirect:'follow',
                     method: 'POST',
                     body: JSON.stringify(payload),
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
                 })
                 .then(response => {
                     //... (the .then block is fine)
